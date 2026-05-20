@@ -11,17 +11,17 @@
         <TextBox Name="Id" FontSize="20" HorizontalAlignment="Left" Margin="159,25,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Name" FontSize="20" HorizontalAlignment="Left" Margin="159,59,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Nachname" FontSize="20" HorizontalAlignment="Left" Margin="159,93,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
-        <TextBox Name="Geburtsdatum" FontSize="20" HorizontalAlignment="Left" Margin="159,0,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Center" Width="120"/>
+        <TextBox Name="Geburtsdatum" FontSize="20" HorizontalAlignment="Left" Margin="159,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Adresse" FontSize="20" HorizontalAlignment="Left" Margin="159,160,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Postleizahl" FontSize="20" HorizontalAlignment="Left" Margin="159,194,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBox Name="Telefonnummer" FontSize="20" HorizontalAlignment="Left" Margin="159,228,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="10,27,0,0" TextWrapping="Wrap" Text="Id:" VerticalAlignment="Top"/>
         <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="10,61,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
         <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="10,93,0,0" TextWrapping="Wrap" Text="Nachname:" VerticalAlignment="Top"/>
-        <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" Text="Geburtsdatum:" VerticalAlignment="Center"/>
+        <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="10,127,0,0" TextWrapping="Wrap" Text="Geburtsdatum:" VerticalAlignment="Top"/>
         <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="10,165,0,0" TextWrapping="Wrap" Text="Adresse:" VerticalAlignment="Top"/>
         <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="10,196,0,0" TextWrapping="Wrap" Text="Postleizahl:" VerticalAlignment="Top"/>
         <TextBlock FontSize="20" HorizontalAlignment="Left" Margin="10,230,0,0" TextWrapping="Wrap" Text="Telefonnummer:" VerticalAlignment="Top"/>
-        <Button Content="Submit" HorizontalAlignment="Left" Margin="284,0,0,0" VerticalAlignment="Center" Click="SubmitClick"/>
+        <Button Content="Submit" HorizontalAlignment="Left" Margin="284,130,0,0" VerticalAlignment="Top" Click="SubmitClick"/>
     </Grid>
 </Window>

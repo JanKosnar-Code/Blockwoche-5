@@ -11,6 +11,9 @@ namespace AdressBuch
         private string ChoosenField;
         private int ChoosenFieldId;
         private string User;
+
+        AddPerson AddPerson = new AddPerson();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -52,7 +55,32 @@ namespace AdressBuch
             UserNameText.Text = UserName;
             PersonenCountBlock.Text = $"Du hast {PersonenCount} Kontakte.";
         }
-        private void Reload()
+
+        private void FindChoosenFieldId()
+        {
+            string[] Field = ChoosenField.Split(':', ',');
+            ChoosenFieldId = Convert.ToInt16(Field[1]);
+        }
+        public void NewPerson(string Input)
+        {
+            bool Succes = false;
+
+            Succes = personen.AddPerson(AddPerson.Input);
+            if (Succes)
+            {
+                Error error = new Error();
+                error.Show();
+            }
+        }
+        private void ContactListField_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (ContactListField.SelectedItem != null)
+            {
+                ChoosenField = ContactListField.SelectedItem.ToString();
+                FindChoosenFieldId();
+            }
+        }
+        private void ReloadClick(object sender, RoutedEventArgs e)
         {
             string FileInput;
             string FilePath = "Kontakte.txt";
@@ -71,22 +99,6 @@ namespace AdressBuch
 
             ProgrammStart(User);
         }
-
-        private void FindChoosenFieldId()
-        {
-            string[] Field = ChoosenField.Split(':', ',');
-            ChoosenFieldId = Convert.ToInt16(Field[1]);
-        }
-
-        private void ContactListField_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (ContactListField.SelectedItem != null)
-            {
-                ChoosenField = ContactListField.SelectedItem.ToString();
-                FindChoosenFieldId();
-            }
-        }
-
         private void LoginClick(object sender, RoutedEventArgs e)
         {
             Login loginWindow = new Login();
@@ -100,15 +112,8 @@ namespace AdressBuch
         }
         private void AddPersonClick(object sender, RoutedEventArgs e)
         {
-            AddPerson add = new AddPerson();
-
-            bool Succes = false;
-            Succes = personen.AddPerson();
-            if (Succes)
-            {
-                Error error = new Error();
-                error.Show();
-            }
+            MainWindow mainWindow = new MainWindow();
+            AddPerson.Show();
         }
         private void RemovePersonClick(object sender, RoutedEventArgs e)
         {

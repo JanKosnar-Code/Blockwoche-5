@@ -23,7 +23,7 @@ namespace AdressBuch
 
         private void UnderstandCLick(object sender, RoutedEventArgs e)
         {
-            this.Visibility = Visibility.Collapsed;
+            this.Close();
         }
     }
 }

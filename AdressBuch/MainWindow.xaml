@@ -18,5 +18,6 @@
         <Button Name="SaveButton" FontSize="20" Content="Save Changes" HorizontalAlignment="Left" Margin="0,309,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="SaveClick"/>
         <Button Name="RemovePersonButton" FontSize="20" Content="Remove Person" HorizontalAlignment="Left" Margin="131,309,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="RemovePersonClick"/>
         <Button Name="AddPersonButton" FontSize="20" Content="Add Person" HorizontalAlignment="Left" Margin="276,309,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="AddPersonClick"/>
+        <Button Name="ReloadButton" FontSize="20" Content="Reload" HorizontalAlignment="Left" Margin="719,393,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="ReloadClick"/>
     </Grid>
 </Window>

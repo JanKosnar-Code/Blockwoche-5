@@ -49,7 +49,7 @@ namespace AdressBuch
                 if (IdentityIsCorrect) 
                 {
                     MainWindow main = new MainWindow();
-                    main.Show();
+                    main.Visibility = Visibility.Visible;
 
                     main.ProgrammStart(UserData);
 
