@@ -8,4 +8,10 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Reference Include="MyLibary">
+      <HintPath>..\MyLibary\MyLibary\obj\Debug\net8.0\MyLibary.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
 </Project>
