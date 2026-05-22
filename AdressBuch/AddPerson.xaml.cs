@@ -17,20 +17,19 @@ namespace AdressBuch
     public partial class AddPerson : Window
     {
         public string Input;
-        public AddPerson()
+        private readonly MainWindow? mainWindow;
+        public AddPerson(MainWindow? mainWindow)
         {
             InitializeComponent();
+            this.mainWindow = mainWindow;
         }
 
         private void SubmitClick(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
-
             Input = $"{Id.Text}, {Name.Text}, {Nachname.Text}, {Geburtsdatum.Text}, {Adresse.Text}, {Postleizahl.Text}, {Telefonnummer.Text}";
 
-            main.Visibility = Visibility.Visible;
-            main.NewPerson(Input);
-            this.Close();
+            mainWindow.NewPerson(Input);
+            Close();
         }
     }
 }

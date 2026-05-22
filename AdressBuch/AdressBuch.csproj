@@ -10,7 +10,7 @@
 
   <ItemGroup>
     <Reference Include="MyLibary">
-      <HintPath>..\MyLibary\MyLibary\obj\Debug\net8.0\MyLibary.dll</HintPath>
+      <HintPath>..\MyLibary\MyLibary\bin\Debug\net8.0-windows\MyLibary.dll</HintPath>
     </Reference>
   </ItemGroup>
 

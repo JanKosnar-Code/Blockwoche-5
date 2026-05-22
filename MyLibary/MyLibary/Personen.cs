@@ -5,7 +5,7 @@ namespace MyLibary
     public class Personen
     {
         private List<Person> personen;
-        private string WrongInput = "Falsche Eingabe!";
+        private const string WrongInput = "Falsche Eingabe!";
         public Personen()
         {
             personen = new List<Person>();
@@ -79,7 +79,7 @@ namespace MyLibary
 
                 if (count == personen.Count) BackToTxt = BackToTxt + p.Telefonnummer;
                 else BackToTxt = BackToTxt + p.Telefonnummer + "\n";
-
+                
                 count++;
             }
             if (Path == null)
@@ -91,7 +91,7 @@ namespace MyLibary
                 return true;
             }
         }
-        public bool RemovePerson(int DelInput) // Löscht einen Datensatz anhand der Datensatz Nummer und gibt einen Bool zurück (Wenn True Erfolgreich, Wenn False Fehlgeschlagen).
+        public string RemovePerson(int DelInput) // Löscht einen Datensatz anhand der Datensatz Nummer und gibt einen Bool zurück (Wenn True Erfolgreich, Wenn False Fehlgeschlagen).
         {
             string StringDelInput = DelInput.ToString();
             try
@@ -101,14 +101,15 @@ namespace MyLibary
                     if (p.Id == StringDelInput)
                     {
                         personen.Remove(p);
-                        return true;
+                        return $"ID: {p.Id}, Name: {p.Vorname} {p.Nachname}, Geburtsdatum: {p.Geburtsdatum}, Adresse: {p.Adresse}, Postleizahl: {p.Postleitzahl}, Telefonnummer: {p.Telefonnummer}";
                     }
                 }
             }
             catch (Exception)
             {
-                return false;
+                return "";
             }
+            return "";
         }
         public List<string> AllPersons() // Gibt dir Alle Personen zurück
         {
@@ -119,7 +120,7 @@ namespace MyLibary
             }
             return list;
         }
-        public bool AddPerson(string Input) // Gibt dir anhand des Inputs einen bool zurück (Wenn True Erfolgreich, Wenn False Fehlgeschlagen).
+        public string AddPerson(string Input) // Gibt dir anhand des Inputs einen bool zurück (Wenn True Erfolgreich, Wenn False Fehlgeschlagen).
         {
             bool ValidAnswer = true;
 
@@ -127,7 +128,7 @@ namespace MyLibary
 
             Person p = new Person();
 
-            if (Input == null) return false;
+            if (Input == null) return "";
 
             ValidAnswer = Pruefen(Input);
 
@@ -145,9 +146,9 @@ namespace MyLibary
 
                 personen.Add(p);
 
-                return true;
+                return $"ID: {p.Id}, Name: {p.Vorname} {p.Nachname}, Geburtsdatum: {p.Geburtsdatum}, Adresse: {p.Adresse}, Postleizahl: {p.Postleitzahl}, Telefonnummer: {p.Telefonnummer}";
             }
-            else return false;
+            else return "";
         }
         public List<string> PersonSearch(string Input) // Anhand eines Begriffes in einem Kontakt (Telefonnummer, Adresse, Name etc) sucht es nach Kontakten.
         {
@@ -172,7 +173,7 @@ namespace MyLibary
                     else if (p.Telefonnummer == Input) Übereinstimung = true;
 
                     if (Übereinstimung)
-                        list.Add($"Person {p.Id}: {p.Vorname} {p.Nachname} {p.Geburtsdatum} {p.Adresse} {p.Postleitzahl} {p.Telefonnummer}");
+                        list.Add($"ID: {p.Id}, Name: {p.Vorname} {p.Nachname}, Geburtsdatum: {p.Geburtsdatum}, Adresse: {p.Adresse}, Postleizahl: {p.Postleitzahl}, Telefonnummer: {p.Telefonnummer}");
 
                     Count++;
                 }

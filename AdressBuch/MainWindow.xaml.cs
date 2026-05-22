@@ -2,6 +2,7 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 
 namespace AdressBuch
 {
@@ -11,19 +12,18 @@ namespace AdressBuch
         private string ChoosenField;
         private int ChoosenFieldId;
         private string User;
-
-        AddPerson AddPerson = new AddPerson();
+        private int PersonenCount;
+        // private bool Color = false;
 
         public MainWindow()
         {
             InitializeComponent();
+            personen = new Personen();
         }
 
         public void ProgrammStart(string UserName)
         {
             User = UserName;
-
-            int PersonenCount;
 
             string FileInput;
             string FilePath = "Kontakte.txt";
@@ -33,7 +33,6 @@ namespace AdressBuch
             FileInput = Personen.Base64Decode(FileInput);
             FileContent = FileInput.Split('\n');
 
-            personen = new Personen();
             personen.GetPersonen(FileContent);
 
             PersonenCount = personen.GetPersonenCount();
@@ -55,7 +54,6 @@ namespace AdressBuch
             UserNameText.Text = UserName;
             PersonenCountBlock.Text = $"Du hast {PersonenCount} Kontakte.";
         }
-
         private void FindChoosenFieldId()
         {
             string[] Field = ChoosenField.Split(':', ',');
@@ -63,13 +61,21 @@ namespace AdressBuch
         }
         public void NewPerson(string Input)
         {
-            bool Succes = false;
+            string Succes;
 
-            Succes = personen.AddPerson(AddPerson.Input);
-            if (Succes)
+            Succes = personen.AddPerson(Input);
+            if (Succes == "")
             {
                 Error error = new Error();
+                error.Owner = this;
+                error.ShowDialog(); 
                 error.Show();
+            }
+            else
+            {
+                ContactListField.Items.Add(Succes);
+                PersonenCount = personen.GetPersonenCount();
+                PersonenCountBlock.Text = $"Du hast {PersonenCount} Kontakte.";
             }
         }
         private void ContactListField_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -79,25 +85,6 @@ namespace AdressBuch
                 ChoosenField = ContactListField.SelectedItem.ToString();
                 FindChoosenFieldId();
             }
-        }
-        private void ReloadClick(object sender, RoutedEventArgs e)
-        {
-            string FileInput;
-            string FilePath = "Kontakte.txt";
-            string[] FileContent;
-
-            FileInput = File.ReadAllText(FilePath);
-            FileInput = Personen.Base64Decode(FileInput);
-            FileContent = FileInput.Split('\n');
-
-            personen.SaveChanges("Kontakte.txt");
-            foreach (string Content in FileContent)
-            {
-                string[] KontakteInhalt = Content.Split(';');
-                ContactListField.Items.Remove($"ID: {KontakteInhalt[0]}, Name: {KontakteInhalt[1]} {KontakteInhalt[2]}, Geburtsdatum: {KontakteInhalt[3]}, Adresse: {KontakteInhalt[4]}, Postleizahl: {KontakteInhalt[5]}, Telefonnummer: {KontakteInhalt[6]}");
-            }
-
-            ProgrammStart(User);
         }
         private void LoginClick(object sender, RoutedEventArgs e)
         {
@@ -112,19 +99,38 @@ namespace AdressBuch
         }
         private void AddPersonClick(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            AddPerson.Show();
+            AddPerson addPersonWindow = new AddPerson(this);
+            addPersonWindow.Owner = this;
+            addPersonWindow.ShowDialog();
         }
         private void RemovePersonClick(object sender, RoutedEventArgs e)
         {
-            bool Succes = false;
+            string Succes;
             Succes = personen.RemovePerson(ChoosenFieldId);
 
-            if (Succes)
+            if (Succes == "")
             {
                 Error error = new Error();
                 error.Show();
             }
+            else
+            {
+                ContactListField.Items.Remove(Succes);
+                PersonenCount = personen.GetPersonenCount();
+                PersonenCountBlock.Text = $"Du hast {PersonenCount} Kontakte.";
+            }
+        }
+
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Style style = new Style
+            {
+                TargetType = typeof(Window)
+            };
+
+            style.Setters.Add(new Setter(Window.BackgroundProperty, (bool)((CheckBox)sender).IsChecked! ? Brushes.Black : Brushes.White));
+
+            Application.Current.Resources["Colour"] = style;
         }
     }
 }

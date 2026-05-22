@@ -4,7 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdressBuch"
-        mc:Ignorable="d"
+        mc:Ignorable="d" Style="{DynamicResource Colour}"
         ResizeMode="NoResize"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
@@ -14,10 +14,10 @@
         <ListBox x:Name="ContactListField" SelectionChanged="ContactListField_SelectionChanged" Margin="0,36,0,101">
 
         </ListBox>
-        <TextBlock Name ="PersonenCountBlock" FontSize="20" HorizontalAlignment="Left" Margin="612,274,0,0" TextWrapping="Wrap" Text="Du hast 0 Kontatke" VerticalAlignment="Top" Width="188" Visibility="Hidden"/>
+        <TextBlock Name ="PersonenCountBlock" FontSize="20" HorizontalAlignment="Left" Margin="612,309,0,0" TextWrapping="Wrap" Text="Du hast 0 Kontatke" VerticalAlignment="Top" Width="188" Visibility="Hidden"/>
         <Button Name="SaveButton" FontSize="20" Content="Save Changes" HorizontalAlignment="Left" Margin="0,309,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="SaveClick"/>
         <Button Name="RemovePersonButton" FontSize="20" Content="Remove Person" HorizontalAlignment="Left" Margin="131,309,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="RemovePersonClick"/>
         <Button Name="AddPersonButton" FontSize="20" Content="Add Person" HorizontalAlignment="Left" Margin="276,309,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="AddPersonClick"/>
-        <Button Name="ReloadButton" FontSize="20" Content="Reload" HorizontalAlignment="Left" Margin="719,393,0,0" VerticalAlignment="Top" Visibility="Hidden" Click="ReloadClick"/>
+        <CheckBox Content="CheckBox" HorizontalAlignment="Left" Margin="582,12,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Checked"/>
     </Grid>
 </Window>
